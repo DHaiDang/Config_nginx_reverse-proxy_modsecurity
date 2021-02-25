@@ -1,21 +1,21 @@
 # Config_nginx_reverse-proxy_modsecurity
 
-### Bước 1 : install nginx, mở ufw cho nginx(enable ufw) ufw status
-### Bước 3 : checking webserver systemctl status nginx (systemctl restart nginx)
-### Buoc 4 : check lại bằng curl -i localhost:80 (22 - ssh, 443 - https) 
-### Buoc 5 : install modules modsecurity on Ubuntu  :
+### Buoc 1 : install nginx, mở ufw cho nginx(enable ufw) ufw status
+### Buoc 2 : checking webserver systemctl status nginx (systemctl restart nginx)
+### Buoc 3 : check lại bằng curl -i localhost:80 (22 - ssh, 443 - https) 
+### Buoc 4 : install modules modsecurity on Ubuntu  :
 
     apt-get install -y git build-essential libpcre3 libpcre3-dev libssl-dev libtool autoconf apache2-dev libxml2-dev libcurl4-openssl-dev automake pkgconf
     
 
-### Buoc 6 : clone gói từ github(gói này trên offical) : git clone -b nginx_refactoring https://github.com/SpiderLabs/ModSecurity.git
+### Buoc 5 : clone gói từ github(gói này trên offical) : git clone -b nginx_refactoring https://github.com/SpiderLabs/ModSecurity.git
 
     cd ModSecurity
     ./autogen.sh
     ./configure --enable-standalone-module --disable-mlogc
     make
 
-### Buoc 7 : Compile Nginx
+### Buoc 6 : Compile Nginx
 
     cd /usr/src
     wget https://nginx.org/download/nginx-1.10.3.tar.gz
@@ -83,7 +83,7 @@
 
     bugs : can fix here https://serverfault.com/questions/913055/removing-nginx-compilation
 
-### Buoc 8 : Configure ModSecurity and Nginx
+### Buoc 7 : Configure ModSecurity and Nginx
 
     - vi /usr/local/nginx/conf/nginx.conf :
 
@@ -116,7 +116,7 @@
         sed -i "s/SecRuleEngine DetectionOnly/SecRuleEngine On/" /usr/local/nginx/conf/modsecurity.conf
 
 
-### Buoc 9 : Add OWASP ModSecurity CRS (Core Rule Set) files:
+### Buoc 8 : Add OWASP ModSecurity CRS (Core Rule Set) files:
 
 
         cd /usr/local/nginx/conf
@@ -128,7 +128,7 @@
         mv RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
 
 
-### Buoc 10 : opne firewall
+### Buoc 9 : opne firewall
 
         ufw allow OpenSSH
         ufw allow 80
