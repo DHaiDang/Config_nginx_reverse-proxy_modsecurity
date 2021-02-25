@@ -5,9 +5,8 @@
 ### Buoc 4 : check lại bằng curl -i localhost:80 (22 - ssh, 443 - https) 
 ### Buoc 5 : install modules modsecurity on Ubuntu  :
 
-    ```
-        apt-get install -y git build-essential libpcre3 libpcre3-dev libssl-dev libtool autoconf apache2-dev libxml2-dev libcurl4-openssl-dev automake pkgconf
-    ```
+    apt-get install -y git build-essential libpcre3 libpcre3-dev libssl-dev libtool autoconf apache2-dev libxml2-dev libcurl4-openssl-dev automake pkgconf
+    
 
 ### Buoc 6 : clone gói từ github(gói này trên offical) : git clone -b nginx_refactoring https://github.com/SpiderLabs/ModSecurity.git
 
